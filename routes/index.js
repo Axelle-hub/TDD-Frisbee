@@ -20,4 +20,23 @@ router.post('/createPin', (req, res) => {
 });
 
 
+// envoyer un frisbee
+router.post("/create-frisbee", (req, res) => {
+  let userCreator = req.body.userCreator;
+  let userInvited = req.body.userInvited;
+  let sport = req.body.sport;
+  let address = req.body.address;
+  let hourMeeting = req.body.hourMeeting;
+  let dateMeeting = req.body.dateMeeting;
+  let isAccepted = req.body.isAccepted; 
+
+  if (!userCreator || !userInvited || !sport || !address || !hourMeeting || !dateMeeting || !isAccepted) {
+    res.json({result: false, message: "veuillez remplir tous les champs"});
+  } else {
+    res.json({result: true, message: "Frisbee envoyé"});
+  }
+});
+
+
+
 module.exports = router;
