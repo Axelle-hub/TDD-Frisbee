@@ -17,3 +17,12 @@ test("Envoyer un Frisbee - create-frisbee", async (done) => {
   .expect({result: true, message: "Frisbee envoyé"});
   done();
 });
+
+
+test("Erreur envoie de Frisbee - create-frisbee", async (done) => {
+  await request(app).post('/create-frisbee')
+  .send({userCreator: "Marie", userInvited: "", sport: "Football", address: "10 rue du chemin, 69000 Lyon", hourMeeting: "17h - 18h", dateMeeting: "10/05/2021", isAccepted: "true" })
+  .expect(200)
+  .expect({result: false, message: "veuillez remplir tous les champs"});
+  done();
+});
